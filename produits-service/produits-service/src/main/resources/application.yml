@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:produits
+    username: root
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+  application:
+    name: produits-service
+  server:
+    servlet:
+      context-path: /produits
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka

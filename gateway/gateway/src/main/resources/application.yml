@@ -1,0 +1,25 @@
+auth0:
+  audience: http://localhost:8080
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-yh1g2imtpwoxx6aa.us.auth0.com
+
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: commande-id
+          uri: lb://commandes-service
+          predicates:
+            - Path=/api/commandes/**
+        - id: produit-id
+          uri: lb://produits-service
+          predicates:
+            - Path=/api/produits/**
+logging:
+  level:
+    org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping: TRACE
